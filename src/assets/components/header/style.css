@@ -1,0 +1,29 @@
+#main{
+  width: 100vw;
+  height: 6vh;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  background: linear-gradient(to right, var(--color-gradient-1), var(--color-gradient-2)
+  , var(--color-gradient-3), var(--color-gradient-4), var(--color-gradient-5));
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#main .navigation{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: #fff;
+  font: 400 16px Roboto;
+}
+
+#main img{
+  object-fit: contain;
+}
+
+#main .navigation a{
+  padding: 1rem;
+}
