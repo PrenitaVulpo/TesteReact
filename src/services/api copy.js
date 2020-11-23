@@ -1,5 +1,3 @@
-const credentialsString = `{"username": "amargo", "password": "amargo"}`;
-const credentials = JSON.parse(credentialsString);
 
 
 const baseUrl='https://paguru-challenge.herokuapp.com/api/v1/'

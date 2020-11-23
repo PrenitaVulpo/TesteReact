@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import apiMock from '../../services/MockAPIs/amargo';
-import api from '../../services/api';
-import User from '../../assets/components/user'
+//import api from '../../services/api';
 
 class UserDetails extends Component{
   constructor(props){

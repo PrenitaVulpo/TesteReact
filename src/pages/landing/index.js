@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Logo from '../../assets/images/logo.png';
 import './style.css'
 import {Context} from '../../assets/context/authContext'
@@ -9,7 +9,6 @@ function Landing(){
   const {authenticated, handleLogin} = useContext(Context);
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
-  let history = useHistory();
 
   console.log( authenticated)
   async function handleEntrada(){

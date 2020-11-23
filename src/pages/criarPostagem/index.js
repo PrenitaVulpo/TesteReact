@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import apiMock from '../../services/MockAPIs/posts-no-header';
+//import api from '../../services/api';
 import Header from '../../assets/components/header'
 import { useHistory} from 'react-router-dom';
 
@@ -9,8 +10,19 @@ function CriarPostagem(){
   const history = useHistory();
   
   async function handleSubmit(){
-    console.log(text)
-    let content = `{"content": "${text}"}`
+    let content = `{"content": "${text}"}`;
+
+
+    /*await apiMock.post('/posts', content)
+      .then(response=>{
+          alert("post criado com sucesso!");
+          history.push('/feed')
+      }).catch(error=>{
+        alert("problema na criação do post");
+        console.log(error.message)
+      })*/
+
+
     await apiMock.post('/posts', content)
       .then(response=>{
           alert("post criado com sucesso!");

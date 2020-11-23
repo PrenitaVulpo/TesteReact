@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import format from './dataformating'
 
 
 class Post extends Component{
