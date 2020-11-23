@@ -1,50 +1,23 @@
-import React, {useEffect, useState, Component} from 'react';
+import React from 'react';
+import { useHistory} from 'react-router-dom';
 import Header from '../../assets/components/header';
-import api from '../../services/MockAPIs/Feed';
-import './style.css'
+import Feed from '../../assets/components/feed';
 
-class Feed extends Component{
+function FeedPage(){
+  const history = useHistory();
 
-  constructor(props){
-    super(props)
-    this.state ={
-      posts: [
-        {
-          "author_name": "Loading",
-          "content": "Loading"
-        }
-      ]
-    }
-  }
-
-  async componentDidMount(){
-    await api.get()
-      .then(response=>{
-        this.setState({posts: response.data.results})
-      }).catch(error=>{
-        console.log(error.message);
-        alert(error.message)
-      })
-  }
-
-render(){
-    return (
-      <div id="main">
+  if(localStorage.getItem("token") !=null){
+    return(
+      <div>
         <Header/>
-        <div id="feed">
-          {this.state.posts.map(post=>{
-            return(
-              <div id="post">
-                <h1>{post.author_name}</h1>
-                <p>{post.content}</p>
-              </div>
-            )
-            })
-          }
-        </div>
+        <Feed/>
       </div>
     )
-  }
+    } else {
+      alert("Você precisa iniciar a sua sessão")
+      history.push("/");
+    }
 }
 
-export default Feed;
+
+export default FeedPage

@@ -12,8 +12,8 @@ class User extends Component{
   render(){
     return(
     <Link to={`/user/${this.props.id}`} id="Main">
-      <h1>{this.props.author_name}</h1>
-      <p>{this.props.content}</p>
+      <h1>{this.props.name}</h1>
+      <p>{this.props.email}</p>
     </Link>
     )
   }

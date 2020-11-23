@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import api from '../../services/MockAPIs/ListUsers';
+import apiMock from '../../services/MockAPIs/ListUsers';
+import User from '../../assets/components/user'
 
 class ListUsers extends Component{
   constructor(props){
@@ -13,20 +14,29 @@ class ListUsers extends Component{
   }
 
   async componentDidMount(){
-    await api.get()
+    console.log(localStorage.getItem("token"));
+    /*await api.get('posts',
+    {headers: {'Authorization': `${localStorage.getItem("token")}`}})
+      .then(response=>{
+        this.setState({posts: response.data.results})
+      }).catch(error=>{
+        console.log(error.message);
+        alert(error.message);
+      })*/
+    await apiMock.get()
       .then(response=>{
         this.setState({users: response.data.results})
-      })
+      }).catch(error=>{
+        console.log(error.message);
+        alert(error.message);
+      });
   }
   render(){  
     return (
       <div>
         {this.state.users.map(user=>{
           return(
-            <a id="user">
-              <h1>{user.username}</h1>
-              <p>{user.email}</p>
-            </a>
+            <User id={user.id} name={user.username} email={user.email}/>
           )
           })
         }

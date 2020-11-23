@@ -1,37 +1,24 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import apiFetch from '../../services/api copy';
-import api from '../../services/api';
-import Header from '../../assets/components/header';
-import appButton from '../../assets/components/button';
+import React, {useState, useContext} from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import Logo from '../../assets/images/logo.png';
 import './style.css'
+import {Context} from '../../assets/context/authContext'
 
 function Landing(){
 
+  const {authenticated, handleLogin} = useContext(Context);
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
+  let history = useHistory();
 
-  const handleSubmit =  () => {
-    console.log(`${login} e ${senha}`)
+  console.log( authenticated)
+  async function handleEntrada(){
+    await handleLogin(`{"username": "${login}", "password": "${senha}"}`)
+
   }
-
-  async function handleLogin(){
-    let credentialsString = `{"username": "amargo", "password": "amargo"}`;
-    let credentials = JSON.parse(credentialsString);
-    
-  
-    await api.post('auth', credentialsString)
-      .then((response) => console.log(response))
-      .catch(error=>{
-        console.log(error)
-      })
-     await apiFetch('auth', credentialsString);
-  } 
 
   return(
     <div>
-      <Header/>
 
     <div id="container">
       <div  className="content">
@@ -48,7 +35,7 @@ function Landing(){
               onChange={(s)=>setSenha(s.target.value)}/>
             </div>
           </div>
-        <button onClick={handleLogin}>entrar</button>
+          <button onClick={handleEntrada}>entrar</button>
         <Link to="/cadastro" id="routeLink">Não tem conta? Cadastre-se aqui!</Link>
       </div>
     </div>

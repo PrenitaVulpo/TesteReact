@@ -1,32 +1,64 @@
-import React, {useEffect, useState} from 'react';
-import Header from '../../assets/components/header'
-import api from '../../services/MockAPIs/user';
+import React, {Component} from 'react';
+import apiMock from '../../services/MockAPIs/amargo';
+import api from '../../services/api';
+import User from '../../assets/components/user'
 
-function User(){
-  const [posts, setPosts] = useState();
+class UserDetails extends Component{
+  constructor(props){
+    super(props)
+    this.state ={
+      user: {
+        "username": "Loading",
+        "email": "Loading"
+      },
+      posts: []
+    }
+  }
 
-  useEffect(()=>{
-    api.get()
+  async componentDidMount(){
+    /*await api.get(`users/${params.id}`,
+    {headers: {'Authorization': `${localStorage.getItem("token")}`}})
       .then(response=>{
-        setPosts(response.data.results)
-        console.log(posts)
-      })
-  },[]);
-  return (
-    <div>
-      <Header/>
-      <h1>User</h1>
-      {posts.map(post=>{
-        return(
-          <div id="post">
-            <h1>{post.author_name}</h1>
-            <p>{post.content}</p>
-          </div>
-        )
-        })
-      }
-    </div>
-  )
+        this.setState({posts: response.data.results})
+      }).catch(error=>{
+        console.log(error.message);
+        alert(error.message);
+      })*/
+      await apiMock.get()
+      .then(response=>{
+        this.setState({user: response.data, posts: response.data.posts});        
+        console.log(JSON.stringify(response.data))
+      }).catch(error=>{
+        console.log(error.message);
+        alert(error.message);
+      });
+     // console.log(this.state.posts)
+  }
+  render(){  
+    return (
+      <div>
+        <h1>{this.state.user.username}</h1>
+        <p>{this.state.user.email}</p>
+        <table>
+          <tr>
+            <th>Post</th>
+            <th>Crado em:</th>
+            <th>Modificado em:</th>
+          </tr>
+          {this.state.posts.map(post=>{
+            return(
+              <tr>
+                <th>{post.content}</th>
+                <th>{post.created_at}</th>
+                <th>{post.updated_at}</th>
+              </tr>
+            )
+           })
+          }
+        </table>
+      </div>
+    )
+  }
 }
 
-export default User;
+export default UserDetails;

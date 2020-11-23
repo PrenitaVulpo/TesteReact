@@ -1,12 +1,43 @@
-import React from 'react';
-import Logo from '../../assets/images/logo.png'
+import React, {useState} from 'react';
+import apiMock from '../../services/MockAPIs/posts-no-header';
+import api from '../../services/api';
+import Logo from '../../assets/images/logo.png';
 import './style.css';
 import {Link, useHistory} from 'react-router-dom';
 
 
+
 function Cadastro(){
-  const {goBack} = useHistory();
-  
+  const [login, setLogin] = useState('');
+  const [senha, setSenha] = useState('');
+  const [email, setEmail] = useState('');
+  let history = useHistory();
+
+  async function handleSignUp(){
+    let credentialsString = `{"username": ${login}, "password": "${login}", "email": ${email}}`;
+    
+    /*await api.post('users', credentialsString)
+    .then((response) => {
+      console.log(response);
+      alert("Sucesso!");
+      history.push("/")
+    })
+    .catch(error=>{
+      console.log(error)
+      alert(error.message)
+    })*/
+
+    await apiMock.post('/users', credentialsString)
+      .then((response) => {
+        console.log(response);
+        alert("Sucesso!");
+        history.push("/");
+      })
+      .catch(error=>{
+        console.log(error)
+        alert(error.message)
+      })
+  } 
   
   return(
     <div id="container">
@@ -18,20 +49,23 @@ function Cadastro(){
         <div className="input-block">
           <div className="input-field">
           <label htmlFor="user">Nome de usuário:</label>
-          <input type="text" name="user"/>
+          <input type="text" name="user"
+          onChange={(s)=>setLogin(s.target.value)}/>
           </div>
           <div className="input-field">
           <label htmlFor="senha">Senha:</label>
-          <input type="password" name="senha"/>
+          <input type="password" name="senha"
+          onChange={(s)=>setSenha(s.target.value)}/>
           </div>
           <div className="input-field">
           <label htmlFor="email">Email</label>
-          <input type="email" name="email"/>
+          <input type="email" name="email"
+          onChange={(s)=>setEmail(s.target.value)}/>
           </div>
         </div>
       </fieldset>
 
-      <button>Cadastrar</button>
+      <button type="button" onClick={handleSignUp}>Cadastrar</button>
 
       <Link to="/" id="routeLink">Voltar à tela inicial</Link>
     </form>
