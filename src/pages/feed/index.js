@@ -1,30 +1,50 @@
-import React, {useEffect, useState} from 'react';
-import api from '../../services/api';
+import React, {useEffect, useState, Component} from 'react';
+import Header from '../../assets/components/header';
+import api from '../../services/MockAPIs/Feed';
+import './style.css'
 
-function Feed(){
-  const [posts, setPosts] = useState([]);
+class Feed extends Component{
 
-  useEffect(()=>{
-    fetch('https://paguru-challenge.herokuapp.com/api/v1/posts/', {
-          method: "GET", 
-          mode: 'no-cors',
-          headers: {
-            Authorization: 'token 8e81fe11efe2e9f25c29f2304971e633fbf1d405'
+  constructor(props){
+    super(props)
+    this.state ={
+      posts: [
+        {
+          "author_name": "Loading",
+          "content": "Loading"
+        }
+      ]
+    }
+  }
+
+  async componentDidMount(){
+    await api.get()
+      .then(response=>{
+        this.setState({posts: response.data.results})
+      }).catch(error=>{
+        console.log(error.message);
+        alert(error.message)
+      })
+  }
+
+render(){
+    return (
+      <div id="main">
+        <Header/>
+        <div id="feed">
+          {this.state.posts.map(post=>{
+            return(
+              <div id="post">
+                <h1>{post.author_name}</h1>
+                <p>{post.content}</p>
+              </div>
+            )
+            })
           }
-          }).then(response=> {
-           // setPosts(response.data.results);
-            console.log(response)})
-          .catch(error=>console.log(error))
-    /*api.get('posts/')
-            .then(response=>{
-              setPosts(response.data.results)
-            })*/
-  },[]);
-  return (
-    <div>
-      
-    </div>
-  )
+        </div>
+      </div>
+    )
+  }
 }
 
 export default Feed;
