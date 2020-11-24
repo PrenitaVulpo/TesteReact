@@ -36,9 +36,19 @@ function CriarPostagem(){
   return(
     <div>
       <Header/>
-      <h1>Criando postagem</h1>
-      <textarea onChange={(s)=>setText(s.target.value)}></textarea>
-      <button type="button" onClick={handleSubmit}>Publicar</button>
+      <div className="row" >
+        <div className="col s12 m4 offset-m4">
+          <div className="card">
+            <div className="card-content">
+              <div className="center-align">
+                <textarea onChange={(s)=>setText(s.target.value)}></textarea>
+                <button type="button" onClick={handleSubmit}>Publicar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   )
 }
