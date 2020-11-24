@@ -7,6 +7,7 @@ import Feed from './pages/feed';
 import Users from './pages/ListUsers';
 import User from './pages/user';
 import PostPost from './pages/criarPostagem';
+import EditPost from './pages/editarPost';
 import {Context} from '../src/assets/context/authContext';
 
 
@@ -37,6 +38,7 @@ const Router = () => {
           <CustomRoute isPrivate exact path="/users" component={Users}/>
           <CustomRoute isPrivate exact path="/user/:id" component={User}/>
           <CustomRoute isPrivate exact path="/post" component={PostPost}/>
+          <CustomRoute isPrivate exact path="/post/:id" component={EditPost}/>
           <CustomRoute component={Erro404}/> 
         </Switch>
       </BrowserRouter>    

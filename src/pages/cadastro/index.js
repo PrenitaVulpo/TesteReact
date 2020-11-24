@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import apiMock from '../../services/MockAPIs/posts-no-header';
 //import api from '../../services/api';
 import Logo from '../../assets/images/logo.png';
-import './style.css';
 import {Link, useHistory} from 'react-router-dom';
 
 
@@ -44,42 +43,50 @@ function Cadastro(){
     }
   } 
   
-  return(
-    <div id="container">
-    <form>
-      <img src={Logo} alt="Paguru"/>
-      <h1>Cadastre-se</h1>
-      
-      <fieldset>
-        <div className="input-block">
-          <div className="input-field">
-            <label htmlFor="user">Nome de usuário:</label>
-            <input type="text" name="user"
-            onChange={(s)=>setLogin(s.target.value)}/>
-          </div>
-          <div className="input-field">
-            <label htmlFor="senha">Senha:</label>
-            <input type="password" name="senha"
-            onChange={(s)=>setSenha(s.target.value)}/>
-          <div className="input-field">
-            <label htmlFor="senha">Confirme a sua senha:</label>
-            <input type="password" name="senha"
-            onChange={(s)=>setSenha2(s.target.value)}/>
-          </div>
-          <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email"
-            onChange={(s)=>setEmail(s.target.value)}/>
-          </div>
+  return (
+    <div className="row" >
+      <div className="col s12 m4 offset-m4">
+        <div className="card">
+          <div className="card-content">
+            <div className="center-align">
+              <img src={Logo} alt="Paguru" />
+              <h4>Cadastro</h4>
+            </div>
+            <form>
+              <div className="input-field">
+                <label htmlFor="email">Email</label>
+                <input type="email" name="email" 
+                  onChange={(s)=>setEmail(s.target.value)}/>
+              </div>
+              <div className="input-block">
+                <div className="input-field">
+                  <label htmlFor="user">Nome de usuário:</label>
+                  <input type="text" name="user" 
+                    onChange={(s)=>setLogin(s.target.value)}/>
+                </div>
+                <div className="input-field">
+                  <label htmlFor="senha">Senha:</label>
+                  <input type="password" name="senha" 
+                    onChange={(s)=>setSenha(s.target.value)}/>
+                </div>
+                <div className="input-field">
+                  <label htmlFor="senha">Senha:</label>
+                  <input type="password" name="senha" 
+                    onChange={(s)=>setSenha2(s.target.value)}/>
+                </div>
+              </div>
+
+
+              <div className="center-align">
+                <button type="button" onClick={handleSignUp}>Cadastre-se</button>
+                <br />
+                <Link to="/" id="routeLink">Já possui uma conta? Faça Login!</Link>
+              </div>
+            </form>
           </div>
         </div>
-      </fieldset>
-
-      <button type="button" onClick={handleSignUp}>Cadastrar</button>
-
-      <Link to="/" id="routeLink">Voltar à tela inicial</Link>
-    </form>
-    </div>
+      </div>
+    </div >
   )
 }
 

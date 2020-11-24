@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory} from 'react-router-dom';
-import Header from '../../assets/components/header';
+//import Header from '../../assets/components/header';
+import Nav from '../../assets/components/nav/index'
 import Feed from '../../assets/components/feed';
 
 function FeedPage(){
@@ -9,7 +10,7 @@ function FeedPage(){
   if(localStorage.getItem("token") !=null){
     return(
       <div>
-        <Header/>
+        <Nav />
         <Feed/>
       </div>
     )

@@ -4,6 +4,7 @@ import api from '../../../services/api';
 import apiMock from '../../../services/MockAPIs/posts-no-header';
 import history from '../history';
 
+
 export default function useAuth() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
