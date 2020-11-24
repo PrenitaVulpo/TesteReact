@@ -35,6 +35,7 @@ class UserDetails extends Component{
      // console.log(this.state.posts)
   }
   render(){  
+    
     return (
       <div>
         <Nav/>

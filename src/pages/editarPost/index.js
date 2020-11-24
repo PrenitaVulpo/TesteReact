@@ -1,5 +1,5 @@
 import React, {useState, useEffect}  from 'react';
-import Header from '../../assets/components/header';
+import Nav from '../../assets/components/nav';
 import apiMock from '../../services/MockAPIs/posts-no-header';
 //import api from '../../services/api';
 
@@ -15,7 +15,7 @@ function PostEdit(){
 
   return(
     <div id="postEdit">
-      <Header/>
+      <Nav/>
       <textarea></textarea>
     </div>
   )

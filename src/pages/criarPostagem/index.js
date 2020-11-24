@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import apiMock from '../../services/MockAPIs/posts-no-header';
 //import api from '../../services/api';
-import Header from '../../assets/components/header'
+import Nav from '../../assets/components/nav'
 import { useHistory} from 'react-router-dom';
 
 
@@ -35,7 +35,7 @@ function CriarPostagem(){
 
   return(
     <div>
-      <Header/>
+      <Nav/>
       <div className="row" >
         <div className="col s12 m4 offset-m4">
           <div className="card">

@@ -12,8 +12,9 @@ function Landing(){
   const [senha, setSenha] = useState('');
 
   console.log( authenticated)
-  async function handleEntrada(){
-    await handleLogin(`{"username": "${login}", "password": "${senha}"}`)
+  function handleEntrada(login){
+    localStorage.setItem('session', 'amargo');
+    handleLogin(`{"username": "${login}", "password": "${senha}"}`)
 
   }
 
@@ -41,7 +42,7 @@ function Landing(){
                 </div>
               </div>
               <div className="center-align">
-                <button onClick={handleLogin}>entrar</button>
+                <button onClick={handleEntrada(login)}>entrar</button>
                 <br />
                 <Link to="/cadastro" id="routeLink">Não tem conta? Cadastre-se aqui!</Link>
               </div>
