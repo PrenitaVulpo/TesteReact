@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { useHistory} from 'react-router-dom';
 import apiMock from '../../../services/MockAPIs/Feed';
 import api from '../../../services/api';
-import Post from '../post'
+import Post from '../post';
+import "./style.css"
 
 class Feed extends Component{
 
@@ -47,13 +48,18 @@ render(){
         <div id="feed">
           {this.state.posts.map(post=>{
             return(
-              /*<div key={post.id} id="post">
-                <h1>{post.author_name}</h1>
-                <p>{post.content}</p>
-              </div>*/
-              console.log(post.created_at),
-
-              <Post post={post}/>
+              <div id="post">
+                <div className="col s12 m3">
+                  <div class="card" /*style="{background-image:}"*/ >
+                    <div class="card-content">
+                      <p>{post.content}</p>
+                    </div>
+                    <div class="card-action">
+                      <p>{post.author_name}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             )
             })
           }

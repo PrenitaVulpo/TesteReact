@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import apiMock from '../../services/MockAPIs/ListUsers';
 import User from '../../assets/components/user';
 import Nav from '../../assets/components/nav/index';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 class ListUsers extends Component{
   constructor(props){

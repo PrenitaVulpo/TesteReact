@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import apiMock from '../../services/MockAPIs/amargo';
+import Nav from '../../assets/components/nav';
 //import api from '../../services/api';
 
 class UserDetails extends Component{
@@ -36,6 +37,7 @@ class UserDetails extends Component{
   render(){  
     return (
       <div>
+        <Nav/>
         <h1>{this.state.user.username}</h1>
         <p>{this.state.user.email}</p>
         <table>
