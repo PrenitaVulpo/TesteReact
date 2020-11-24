@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory} from 'react-router-dom';
 //import Header from '../../assets/components/header';
-import Nav from '../../assets/components/nav/index'
+import Nav from '../../assets/components/nav/index';
 import Feed from '../../assets/components/feed';
 
 function FeedPage(){
